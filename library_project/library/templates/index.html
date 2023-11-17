@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Бібліотека інституту</title>
+</head>
+<body>
+    <h1>Бібліотека інституту</h1>
+    <p><em><span style="color:red;">Прокопенко Данііл Олександрович КН-20002-б</span></em></p>
+
+    <h2>Книги</h2>
+    <table border="1">
+        <tr>
+            <th>Інвентарний номер книги</th>
+            <th>Автор книги</th>
+            <th>Назва</th>
+            <th>Розділ</th>
+            <th>Рік видання</th>
+            <th>Кількість сторінок</th>
+            <th>Ціна</th>
+            <th>Вид</th>
+            <th>Кількість примірників</th>
+            <th>Максимальний термін находження у читача</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.inventory_number }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.section }}</td>
+            <td>{{ book.year_of_publication }}</td>
+            <td>{{ book.pages }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.book_type }}</td>
+            <td>{{ book.copies }}</td>
+            <td>{{ book.max_loan_period }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Читачі</h2>
+    <table border="1">
+        <tr>
+           <th>Номер читацького квитка</th>
+           <th>Прізвище читача</th>
+           <th>Ім’я читача</th>
+           <th>Телефон читача</th>
+           <th>Адреса</th>
+           <th>Курс</th>
+           <th>Група</th>
+       </tr>
+    {% for reader in readers %}
+    <tr>
+        <td>{{ reader.card_number }}</td>
+        <td>{{ reader.last_name }}</td>
+        <td>{{ reader.first_name }}</td>
+        <td>{{ reader.phone }}</td>
+        <td>{{ reader.address }}</td>
+        <td>{{ reader.course }}</td>
+        <td>{{ reader.group }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+    <h2>Видача книжок</h2>
+    <table border="1">
+    <tr>
+        <th>Код видачі</th>
+        <th>Дата видачі</th>
+        <th>Номер квітка читача</th>
+        <th>Інвентарний номер книги</th>
+    </tr>
+    {% for book_issue in book_issues %}
+    <tr>
+        <td>{{ book_issue.issue_code }}</td>
+        <td>{{ book_issue.issue_date }}</td>
+        <td>{{ book_issue.reader_card_number }}</td>
+        <td>{{ book_issue.book_inventory_number }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
